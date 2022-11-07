@@ -17,8 +17,6 @@ extension AppUser {
     }
 
     @NSManaged public var fullName: String?
-    @NSManaged public var gender: String?
-    @NSManaged public var adress: String?
     @NSManaged public var userName: String?
     @NSManaged public var password: String?
     @NSManaged public var id: UUID?
