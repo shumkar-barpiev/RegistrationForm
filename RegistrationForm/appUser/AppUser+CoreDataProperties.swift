@@ -16,7 +16,6 @@ extension AppUser {
         return NSFetchRequest<AppUser>(entityName: "AppUser")
     }
 
-    @NSManaged public var fullName: String?
     @NSManaged public var userName: String?
     @NSManaged public var password: String?
     @NSManaged public var id: UUID?

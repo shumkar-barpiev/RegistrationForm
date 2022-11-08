@@ -151,10 +151,21 @@ class RegistrationViewController: UIViewController {
                 let userName = userNameTextField.text!
                 let password = pass1TextField.text!
                 
-                print(password)
-                print(id)
+                self.createUser(id, userName, password)
+                
+                let alertController = UIAlertController(title: "Congratulations!!!", message: "User created succesfully...", preferredStyle: .alert)
+                let action = UIAlertAction(title: "ok", style: .cancel) { [weak self] _ in
+                    self?.userNameTextField.text?.removeAll()
+                    self?.emailTextField.text?.removeAll()
+                    self?.pass1TextField.text?.removeAll()
+                    self?.pass2TextField.text?.removeAll()
+                    
+                }
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+                
             }else{
-                let alertController = UIAlertController(title: "Warning!!!", message: "Enter the e-mail correctly. For example: eMail@example.com ", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Warning!!!", message: "Enter the e-mail correctly. For example: email@example.com ", preferredStyle: .alert)
                 let action = UIAlertAction(title: "ok", style: .cancel) { _ in
                     
                 }
@@ -166,11 +177,10 @@ class RegistrationViewController: UIViewController {
     
 //    CoreData implementation
     
-    func createUser(_ id: UUID, _ fullName: String, _ userName: String, _ passWord: String){
+    func createUser(_ id: UUID, _ username: String, _ passWord: String){
         let newUser = AppUser(context: context)
         newUser.id = id
-        newUser.fullName = fullName
-        newUser.userName = userName
+        newUser.userName = username
         newUser.password = passWord
         
         do{
